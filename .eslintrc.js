@@ -6,8 +6,8 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'airbnb',
     'plugin:prettier/recommended',
+    'airbnb',
     'prettier'
   ],
   parserOptions: {
@@ -17,12 +17,17 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['react-native', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] }
-    ]
+    ],
+    'class-methods-use-this': 'off',
+    'import/prefer-default-export': 'off'
+  },
+  globals: {
+    __DEV__: true
   }
 };
