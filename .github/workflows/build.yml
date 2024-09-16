@@ -5,17 +5,31 @@ on:
       - master
 jobs:
   build-android:
-    runs-on : ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4.1.0
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3.13.0
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          distribution: adopt
+          node-version: 22
+      - name: Install dependencies
+        run: |
+          npm install
+      - name: Set up Java JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
           java-version: 17
-      - name: Build with Gradle
-        run : ./gradlew build
+      - name: Install Android SDK
+        uses: ReactiveCircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew build
+      - name: Build Android app
+        run: |
+          cd android
+          ./gradlew assembleRelease # Assemble the Android release
   build-ios:
     runs-on: macos-latest
     steps:
