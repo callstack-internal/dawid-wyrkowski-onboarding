@@ -9,7 +9,7 @@ import App from './App.tsx';
 import { name as appName } from './app.json';
 
 if (__DEV__) {
-    global.XMLHttpRequest = SimpleXMLDebugger;
+  global.XMLHttpRequest = SimpleXMLDebugger;
 }
 
 AppRegistry.registerComponent(appName, () => App);

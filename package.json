@@ -8,8 +8,8 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "prettier": "prettier --check '**/*.{ts,tsx}'",
-    "prettier:fix": "prettier --write '**/*.{ts,tsx}'"
+    "prettier": "prettier --check '**/*.{ts,tsx,js}'",
+    "prettier:fix": "prettier --write '**/*.{ts,tsx,js}'"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
