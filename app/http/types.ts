@@ -1,11 +1,11 @@
-interface WeatherResponse {
+export interface WeatherResponse {
     cod: number;
     calctime: number;
     cnt: number;
     list: WeatherItem[];
 }
 
-interface WeatherItem {
+export interface WeatherItem {
     id: number;
     dt: number;
     name: string;
@@ -19,7 +19,7 @@ interface WeatherItem {
     weather: WeatherDescription[];
 }
 
-interface Coordinates {
+export interface Coordinates {
     Lon: number;
     Lat: number;
 }
