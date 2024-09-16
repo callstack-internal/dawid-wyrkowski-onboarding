@@ -1,20 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
   useColorScheme,
-  View,
+  View
 } from 'react-native';
 
-import {
-  Colors,
-  Header,
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 import WeatherApi from './app/http/WeatherApi.ts';
-import {getUniqueCities} from './app/http/utils.ts';
+import { getUniqueCities } from './app/http/utils.ts';
 
-function App(): React.JSX.Element {
+function App(): ReactElement {
   const isDarkMode = useColorScheme() === 'dark';
 
   const lat = 54.3667617;
@@ -22,12 +19,12 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
     WeatherApi.findCitiesWeatherInRadiusByLatLng(lat, lng, 15, 100)
-        .then(arg => console.log('here I am', getUniqueCities(arg.data.list)))
-        .catch(err => console.log('here I am catching error babe', err));
+      .then((arg) => console.log('here I am', getUniqueCities(arg.data.list)))
+      .catch((err) => console.log('here I am catching error babe', err));
   }, []);
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter
   };
 
   return (
@@ -38,12 +35,14 @@ function App(): React.JSX.Element {
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+        style={backgroundStyle}
+      >
         <Header />
         <View
           style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }} />
+            backgroundColor: isDarkMode ? Colors.black : Colors.white
+          }}
+        />
       </ScrollView>
     </SafeAreaView>
   );

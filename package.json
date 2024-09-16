@@ -8,8 +8,8 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "prettier": "prettier --check '**/*.{ts,tsx}'",
-    "prettier:fix": "prettier --write '**/*.{ts,tsx}'"
+    "prettier": "prettier --check '**/*.{ts,tsx,js}'",
+    "prettier:fix": "prettier --write '**/*.{ts,tsx,js}'"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
@@ -29,6 +29,8 @@
     "@react-native/typescript-config": "0.75.1",
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
     "babel-jest": "^29.6.3",
     "eslint": "^8.19.0",
     "eslint-config-airbnb": "^19.0.4",
