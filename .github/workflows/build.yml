@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   build:
-    runs-on : macos-latest
+    runs-on : ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.0
@@ -14,8 +14,6 @@ jobs:
         with:
           distribution: adopt
           java-version: 17
-      - name: Grant execute permissions for gradlew
-        run: chmod +x ./gradlew
       - name: Build with Gradle
         run : ./gradlew build
   build-ios:
