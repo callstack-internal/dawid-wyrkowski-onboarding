@@ -18,6 +18,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Install dependecies
+        run: yarn install
       - name: build app
         uses: reactivecircus/android-emulator-runner@v2
         with:
