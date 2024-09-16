@@ -1,4 +1,4 @@
-class SimpleXMLDebugger extends XMLHttpRequest {
+export class SimpleXMLDebugger extends XMLHttpRequest {
     constructor() {
         super();
     }
@@ -8,7 +8,3 @@ class SimpleXMLDebugger extends XMLHttpRequest {
         super.open(method, url, async, user, password);
     }
 }
-if (__DEV__) {
-    global.XMLHttpRequest = SimpleXMLDebugger;
-}
-

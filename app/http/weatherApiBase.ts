@@ -1,10 +1,10 @@
+import { OPEN_WEATHER_MAP_API_KEY } from '@env';
 import axios from 'axios';
-import { weatherApiKey } from '../utils/constants.ts';
 
 const weatherApiBase = axios.create({
-    baseURL: 'http://api.openweathermap.org/data/2.5/',
+    baseURL: 'https://api.openweathermap.org/',
     params: {
-        appid: weatherApiKey,
+        appid: OPEN_WEATHER_MAP_API_KEY,
     },
 });
 

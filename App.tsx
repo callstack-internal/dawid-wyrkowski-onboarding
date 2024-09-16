@@ -1,17 +1,8 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React, { useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
-  StyleSheet,
-  Text,
   useColorScheme,
   View,
 } from 'react-native';
@@ -21,6 +12,7 @@ import {
   Header,
 } from 'react-native/Libraries/NewAppScreen';
 import WeatherApi from './app/http/WeatherApi.ts';
+import {getUniqueCities} from './app/http/utils.ts';
 
 function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
@@ -30,7 +22,8 @@ function App(): React.JSX.Element {
 
   useEffect(() => {
     WeatherApi.findCitiesWeatherInRadiusByLatLng(lat, lng, 15, 100)
-        .then(arg => console.log('here I am', arg));
+        .then(arg => console.log('here I am', getUniqueCities(arg.data.list)))
+        .catch(err => console.log('here I am catching error babe', err));
   }, []);
 
   const backgroundStyle = {
