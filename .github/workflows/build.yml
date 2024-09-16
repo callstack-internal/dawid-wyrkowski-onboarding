@@ -4,32 +4,22 @@ on:
     branches:
       - master
 jobs:
-  build-android:
-    runs-on: macos-13
+  build:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 22
-      - name: Install dependencies
-        run: |
-          npm install
-      - name: Set up Java JDK
+      - name: Set up JDK
         uses: actions/setup-java@v3
         with:
           distribution: zulu
           java-version: 17
-      - name: Install Android SDK
-        uses: reactivecircus/android-emulator-runner@v2
+      - name: Set up Android SDK
+        uses: reactivecircus/android-sdk-manager@v2
         with:
           components: 'platform-tools,build-tools;30.0.3,android-30'
-          script: ./gradlew build
-      - name: Build Android app
-        run: |
-          cd android
-          ./gradlew assembleRelease # Assemble the Android release
+      - name: Build
+        run: ./gradlew assembleDebug
   build-ios:
     runs-on: macos-latest
     steps:
