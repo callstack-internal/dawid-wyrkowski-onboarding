@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   build-android:
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -26,7 +26,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 31
-          arch: arm64-v8a
+#          arch: arm64-v8a
           script: ./gradlew build
       - name: Build Android app
         run: |
