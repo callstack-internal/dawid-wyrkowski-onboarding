@@ -24,7 +24,7 @@ jobs:
       - name: Install Android SDK
         uses: ReactiveCircus/android-emulator-runner@v2
         with:
-          api-level: 33
+          api-level: 32
           script: ./gradlew build
           arch: x86_64
           target: google_apis
