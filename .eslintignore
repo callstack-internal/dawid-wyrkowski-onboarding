@@ -1,0 +1,4 @@
+#ignore
+metro.config.js
+#we omit because __DEV__ is n
+global.d.ts
