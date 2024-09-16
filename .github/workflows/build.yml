@@ -22,10 +22,12 @@ jobs:
           distribution: temurin
           java-version: 11
       - name: Install Android SDK
-        uses: reactivecircus/android-emulator-runner@v2
+        uses: ReactiveCircus/android-emulator-runner@v2.32.0
         with:
           api-level: 33
           script: ./gradlew build
+          arch: arm64-v8a
+          target: [default, google_apis]
       - name: Build Android app
         run: |
           cd android
