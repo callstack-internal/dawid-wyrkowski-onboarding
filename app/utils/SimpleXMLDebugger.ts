@@ -1,8 +1,4 @@
 export class SimpleXMLDebugger extends XMLHttpRequest {
-  constructor() {
-    super();
-  }
-
   open(
     method: string,
     url: string,
