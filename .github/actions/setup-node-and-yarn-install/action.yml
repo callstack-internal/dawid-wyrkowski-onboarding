@@ -1,0 +1,12 @@
+name: Setup node and yarn install
+description: Setup node and install dependencies with yarn
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 22npm
+        cache: yarn
+    - name: Install project dependencies
+      run: yarn install
+      shell: bash

@@ -23,6 +23,7 @@ module.exports = {
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] }
-    ]
+    ],
+    'class-methods-use-this': 'off'
   }
 };
