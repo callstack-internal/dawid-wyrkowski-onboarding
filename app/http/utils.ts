@@ -1,3 +1,5 @@
+import { WeatherItem } from './types.ts';
+
 const normalizeCityName = (name: string) => {
     return name
         .normalize('NFD')
@@ -8,8 +10,9 @@ const normalizeCityName = (name: string) => {
 export const getUniqueCities = (cities: WeatherItem[]): WeatherItem[] => {
     return cities.filter((city, index, self) => {
         const normalizedName = normalizeCityName(city.name);
-        return index === self.findIndex((c) => normalizeCityName(c.name) === normalizedName);
+        return (
+            index ===
+            self.findIndex((c) => normalizeCityName(c.name) === normalizedName)
+        );
     });
 };
-
-
