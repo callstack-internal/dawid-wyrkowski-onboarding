@@ -16,7 +16,6 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
-          npx pod-install # For iOS pods, useful to install native dependencies
       - name: Set up Java JDK
         uses: actions/setup-java@v3
         with:
@@ -25,7 +24,7 @@ jobs:
       - name: Install Android SDK
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 31
+          api-level: 33
           script: ./gradlew build
       - name: Build Android app
         run: |
