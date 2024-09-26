@@ -3,7 +3,17 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "es2015",
-    "rootDir": "./",
-    "strict": true
+    "rootDir": ".",
+    "baseUrl": "app",
+    "strict": true,
+    "paths": {
+      "@components/*": ["app/components/*"],
+      "@http/*": ["app/http/*"],
+      "@navigation/*": ["app/navigation/*"],
+      "@screens/*": ["app/screens/*"],
+      "@state/*": ["app/state/*"],
+      "@types/*": ["app/types/*"],
+      "@utils/*": ["app/types/*"]
+    }
   }
 }

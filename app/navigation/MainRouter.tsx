@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createStaticNavigation } from '@react-navigation/native';
-import { MapCityListScreen } from '../screens/MapCityListScreen/MapCityListScreen.tsx';
-import { WeatherDetailsScreen } from '../screens/WeatherDetailsScreen/WeatherDetailsScreen.tsx';
+import { MapCityListScreen } from 'screens/MapCityListScreen/MapCityListScreen.tsx';
+import { WeatherDetailsScreen } from 'screens/WeatherDetailsScreen/WeatherDetailsScreen.tsx';
 
 /**
  * Add here types for the screens that are passed by navigation

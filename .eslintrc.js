@@ -17,7 +17,16 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react-native', 'prettier'],
+  plugins: ['react-native', 'prettier', '@typescript-eslint'],
+  settings: {
+    'import/resolver': {
+      typescript: {}, // This loads the TypeScript `paths` from `tsconfig.json`
+      node: {
+        paths: ['app'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
+  },
   rules: {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': [
