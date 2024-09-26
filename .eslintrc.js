@@ -17,7 +17,18 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  plugins: ['react-native', 'prettier'],
+  plugins: ['react-native', 'prettier', '@typescript-eslint'],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true
+      },
+      node: {
+        paths: ['app'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx']
+      }
+    }
+  },
   rules: {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': [

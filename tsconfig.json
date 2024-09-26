@@ -2,8 +2,20 @@
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
     "target": "ES5",
-    "module": "es2015",
-    "rootDir": "./",
-    "strict": true
-  }
+    "module": "ESNext",
+    "rootDir": ".",
+    "baseUrl": "app",
+    "strict": true,
+    "paths": {
+      "@components/*": ["components/*"],
+      "@http/*": ["http/*"],
+      "@navigation/*": ["navigation/*"],
+      "@screens/*": ["screens/*"],
+      "@state/*": ["state/*"],
+      "@types/*": ["types/*"],
+      "@utils/*": ["utils/*"]
+    }
+  },
+  "include": ["app/**/*.ts", "app/**/*.tsx"],
+  "exclude": ["node_modules"]
 }
