@@ -20,7 +20,9 @@ module.exports = {
   plugins: ['react-native', 'prettier', '@typescript-eslint'],
   settings: {
     'import/resolver': {
-      typescript: {}, // This loads the TypeScript `paths` from `tsconfig.json`
+      typescript: {
+        alwaysTryTypes: true
+      },
       node: {
         paths: ['app'],
         extensions: ['.js', '.jsx', '.ts', '.tsx']
