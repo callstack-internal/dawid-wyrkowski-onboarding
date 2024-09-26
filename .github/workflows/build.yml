@@ -48,8 +48,8 @@ jobs:
         run: |
           cd ios
           xcodebuild \
-            -workspace YourApp.xcworkspace \
-            -scheme YourApp \
+            -workspace CkOnboardinApp.xcworkspace \
+            -scheme CkOnboardinApp \
             -configuration Release \
             -sdk iphoneos \
             -derivedDataPath build/ \
