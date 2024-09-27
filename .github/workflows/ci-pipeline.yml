@@ -91,7 +91,7 @@ jobs:
 
       - name: Set up Fastlane API Key
         run: |        
-          echo "${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}" > ios/fastlane/AuthKey.p8
+          echo "${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}" > ios/fastlane/AuthKey.p8
         env:
           APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
 
