@@ -14,7 +14,7 @@
       "@state/*": ["state/*"],
       "@types/*": ["types/*"],
       "@utils/*": ["utils/*"]
-    }
+    },
   },
   "include": ["app/**/*.ts", "app/**/*.tsx"],
   "exclude": ["node_modules"]
