@@ -8,6 +8,11 @@ platform :ios do
       in_house: false
     )
 
+    cert(
+      force: true,
+      output_path: "fastlane/certificates"
+    )
+
     sigh(
       app_identifier: "com.dawidcompany.simpleweatherapp",
       adhoc: true,
