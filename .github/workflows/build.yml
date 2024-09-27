@@ -31,26 +31,26 @@ jobs:
           api-level: 29
           script: cd ./android && ./gradlew assembleRelease
 
-  #build-ios:
-  #  runs-on: macos-latest
-  #  steps:
-  #    - name: Checkout repository
-  #      uses: actions/checkout@v3
-  #    - name: Set up Node.js
-  #      uses: actions/setup-node@v3
-  #      with:
-  #        node-version: 22
-  #    - name: Install dependencies
-  #      run: |
-  #        npm install
-  #        npx pod-install
-  #    - name: Build iOS app
-  #      run: |
-  #        cd ios
-  #        xcodebuild \
-  #          -workspace CkOnboardinApp.xcworkspace \
-  #          -scheme CkOnboardinApp \
-  #          -configuration Release \
-  #          -sdk iphoneos \
-  #          -derivedDataPath build/ \
-  #          clean build
+  build-ios:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: |
+          npm install
+          npx pod-install
+      - name: Build iOS app
+        run: |
+          cd ios
+          xcodebuild \
+            -workspace CkOnboardinApp.xcworkspace \
+            -scheme CkOnboardinApp \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build/ \
+            clean build
