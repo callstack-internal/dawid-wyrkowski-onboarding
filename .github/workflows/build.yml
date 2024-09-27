@@ -51,6 +51,7 @@ jobs:
             -workspace CkOnboardinApp.xcworkspace \
             -scheme CkOnboardinApp \
             -configuration Release \
+            -allowProvisioningUpdates \
             -sdk iphoneos \
             -derivedDataPath build/ \
             clean build
