@@ -89,14 +89,14 @@ jobs:
           bundle install
 
       - name: Set up Fastlane API Key
-        run: |
-          pwd
-          echo "${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}" > fastlane/AuthKey.p8
+        run: |        
+          echo "${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}" > ios/fastlane/AuthKey.p8
         env:
           APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
 
       - name: Run Fastlane Lane
         run: |
+          cd ios
           bundle exec fastlane beta
         env:
           APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
