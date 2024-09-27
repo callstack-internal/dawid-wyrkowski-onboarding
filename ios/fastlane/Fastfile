@@ -7,12 +7,7 @@ platform :ios do
       key_filepath: "fastlane/AuthKey.p8",
       in_house: false
     )
-
-    cert(
-      force: true,
-      output_path: "fastlane/certificates"
-    )
-
+    cert
     sigh(
       app_identifier: "com.dawidcompany.simpleweatherapp",
       adhoc: true,
