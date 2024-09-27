@@ -97,6 +97,7 @@ jobs:
 
       - name: Run Fastlane Lane
         run: |
+          cd ios
           bundle exec fastlane beta
         env:
           APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
