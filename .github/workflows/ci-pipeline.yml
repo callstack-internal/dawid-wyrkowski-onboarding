@@ -84,6 +84,7 @@ jobs:
 
       - name: Install Fastlane
         run: |
+          cd ios
           rm -rf Gemfile.lock
           gem install bundler -v 2.4.22
           bundle install
