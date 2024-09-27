@@ -1,24 +1,3 @@
-export interface WeatherResponse {
-  cod: number;
-  calctime: number;
-  cnt: number;
-  list: WeatherItem[];
-}
-
-export interface WeatherItem {
-  id: number;
-  dt: number;
-  name: string;
-  coord: Coordinates;
-  main: MainWeather;
-  visibility: number;
-  wind: Wind;
-  rain: Rain | null;
-  snow: Snow | null;
-  clouds: Clouds;
-  weather: WeatherDescription[];
-}
-
 export interface Coordinates {
   Lon: number;
   Lat: number;
@@ -57,4 +36,25 @@ interface WeatherDescription {
   main: string;
   description: string;
   icon: string;
+}
+
+export interface WeatherItem {
+  id: number;
+  dt: number;
+  name: string;
+  coord: Coordinates;
+  main: MainWeather;
+  visibility: number;
+  wind: Wind;
+  rain: Rain | null;
+  snow: Snow | null;
+  clouds: Clouds;
+  weather: WeatherDescription[];
+}
+
+export interface WeatherResponse {
+  cod: number;
+  calctime: number;
+  cnt: number;
+  list: WeatherItem[];
 }
