@@ -37,10 +37,10 @@ jobs:
     needs: tsc  # This job depends on tsc
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache Node.js modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.yarn
@@ -75,7 +75,7 @@ jobs:
     needs: lint  # This job depends on test
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm install
@@ -89,7 +89,7 @@ jobs:
     needs: lint  # This job depends on test
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: npm install
