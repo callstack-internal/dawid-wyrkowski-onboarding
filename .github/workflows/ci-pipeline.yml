@@ -91,17 +91,17 @@ jobs:
 
       - name: Set up Fastlane API Key
         run: |        
-          echo "${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}" > ios/fastlane/AuthKey.p8
+          echo "${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}" > ios/fastlane/AuthKey.p8
         env:
-          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+          APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
 
       - name: Run Fastlane Lane
         run: |
           cd ios
-          bundle exec fastlane beta api_key_id:${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }} issuer_id:${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-#        env:
-#          APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
-#          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          bundle exec fastlane beta
+        env:
+          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
+          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
 
   # Fifth job: Build Android
 #  build_android:
