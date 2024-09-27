@@ -80,11 +80,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.3'
+          ruby-version: '3.3.0'
 
       - name: Install Fastlane
         run: |
-          gem install bundler
+          gem install bundler -v 2.4.22
           bundle install
 
       - name: Set up Fastlane API Key
