@@ -97,6 +97,8 @@ jobs:
 
       - name: Run Fastlane Lane
         run: |
+          echo "FASTLANE_API_KEY_ID=${{ secrets.APP_STORE_CONNECT_KEY_ID }}" >> $GITHUB_ENV
+          echo "FASTLANE_API_ISSUER_ID=${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}" >> $GITHUB_ENV
           cd ios
           bundle exec fastlane beta
         env:
