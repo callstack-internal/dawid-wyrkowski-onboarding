@@ -1,0 +1,98 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  tsc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ~/.cache
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run TypeScript compiler
+        run: npm run tsc
+  lint:
+    runs-on: ubuntu-latest
+    needs: tsc  # This job depends on tsc
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ~/.cache
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Linting
+        run: npm run lint
+
+# We will add this later with e2e tests and when I will setup jest environments :)
+#  test:
+#    runs-on: ubuntu-latest
+#    needs: lint  # This job depends on lint
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v3
+#
+#      - name: Install dependencies
+#        run: npm install
+#
+#      - name: Run Tests
+#        run: npm test
+
+  # Fourth job: Build iOS
+  build_ios:
+    runs-on: macos-latest
+    needs: lint  # This job depends on test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Fastlane for iOS
+        run: fastlane ios build
+
+  # Fifth job: Build Android
+  build_android:
+    runs-on: ubuntu-latest
+    needs: lint  # This job depends on test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Fastlane for Android
+        run: fastlane android build
