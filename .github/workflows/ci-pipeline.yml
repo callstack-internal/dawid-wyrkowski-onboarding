@@ -98,10 +98,10 @@ jobs:
       - name: Run Fastlane Lane
         run: |
           cd ios
-          bundle exec fastlane beta api_key_id="${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}" issuer_id="${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}"
-        env:
-          APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
-          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          bundle exec fastlane beta api_key_id:${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }} issuer_id:${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+#        env:
+#          APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+#          APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
 
   # Fifth job: Build Android
 #  build_android:
