@@ -19,7 +19,7 @@ platform :ios do
       api_key: api_key
     )
 
-    gym(scheme: "CkOnboardinApp")
+    gym(scheme: "Release")
 
     upload_to_testflight(
       skip_submission: true,
