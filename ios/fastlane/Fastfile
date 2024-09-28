@@ -70,7 +70,7 @@ platform :ios do
       configuration: "Release", # can use config type for Release
       workspace: "CkOnboardinApp.xcworkspace",
       scheme: "CkOnboardinApp",
-      export_method: "adhoc", # can use type like app-store, ad-hoc according to the requirement.
+      export_method: "ad-hoc", # can use type like app-store, ad-hoc according to the requirement.
       export_options: {
         provisioningProfiles: {
             DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER,
