@@ -89,12 +89,6 @@ jobs:
           gem install bundler -v 2.4.22
           bundle install
 
-#      - name: Set up Fastlane API Key
-#        run: |
-#          echo "${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}" > ios/fastlane/AuthKey.p8
-#        env:
-#          APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
-
       - name: Run Fastlane Lane
         run: |
           cd ios
