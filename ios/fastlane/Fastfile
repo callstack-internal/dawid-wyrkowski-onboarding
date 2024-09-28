@@ -70,7 +70,6 @@ platform :ios do
       workspace: "CkOnboardinApp.xcworkspace",
       scheme: "CkOnboardinApp",
       export_method: "ad-hoc",
-      skip_codesigning: true,
       export_options: {
         provisioningProfiles: {
             DEVELOPER_APP_IDENTIFIER => PROVISIONING_PROFILE_SPECIFIER,
