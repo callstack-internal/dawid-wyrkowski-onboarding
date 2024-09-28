@@ -13,7 +13,6 @@ APPLE_ISSUER_ID = ENV["APP_STORE_CONNECT_ISSUER_ID"]
 APPLE_KEY_ID = ENV["APP_STORE_CONNECT_KEY_IDENTIFIER"]
 APPLE_KEY_CONTENT = ENV["APP_STORE_CONNECT_PRIVATE_KEY"]
 GIT_AUTHORIZATION = ENV["GIT_AUTHORIZATION"]
-PROVISIONING_PROFILE_ID = ENV["PROVISIONING_PROFILE_ID"]
 
 def delete_temp_keychain(name)
   delete_keychain(
@@ -73,8 +72,7 @@ platform :ios do
       export_method: "ad-hoc", # can use type like app-store, ad-hoc according to the requirement.
       export_options: {
         provisioningProfiles: {
-            DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER,
-            DEVELOPER_APP_IDENTIFIER => PROVISIONING_PROFILE_ID
+            "com.dawidcompany.simpleweatherapp" => "match adhoc com.dawidcompany.simpleweatherapp"
         }
       }
     )
