@@ -40,7 +40,6 @@ platform :ios do
     keychain_name = TEMP_KEYCHAIN_USER
     keychain_password = TEMP_KEYCHAIN_PASSWORD
     output_name = "OnBoardingApp"
-    workspace = "CkOnboardinApp.xcworkspace",
     ensure_temp_keychain(keychain_name, keychain_password)
 
     api_key = app_store_connect_api_key(
@@ -69,7 +68,7 @@ platform :ios do
 
     gym(
       configuration: "Release", # can use config type for Release
-      workspace: workspace,
+      workspace: "CkOnboardinApp.xcworkspace",
       scheme: "CkOnboardinApp",
       export_method: "adhoc", # can use type like app-store, ad-hoc according to the requirement.
       export_options: {
