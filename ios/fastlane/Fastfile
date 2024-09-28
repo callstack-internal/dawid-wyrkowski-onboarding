@@ -38,10 +38,10 @@ end
 
 platform :ios do
   lane :beta do
-    echo "START"
-    echo TEMP_KEYCHAIN_PASSWORD
-    echo TEMP_KEYCHAIN_USER
-    echo "END"
+    echo(key: "START")
+    echo(key: TEMP_KEYCHAIN_PASSWORD)
+    echo(key: TEMP_KEYCHAIN_USER)
+    echo(key: "END")
     keychain_name = TEMP_KEYCHAIN_USER
     keychain_password = TEMP_KEYCHAIN_PASSWORD
     output_name = "OnBoardingApp"
