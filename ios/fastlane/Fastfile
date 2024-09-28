@@ -72,8 +72,7 @@ platform :ios do
       export_method: "ad-hoc", # can use type like app-store, ad-hoc according to the requirement.
       export_options: {
         provisioningProfiles: {
-            DEVELOPER_APP_ID => PROVISIONING_PROFILE_SPECIFIER,
-            DEVELOPER_APP_IDENTIFIER => PROVISIONING_PROFILE_ID
+            DEVELOPER_APP_IDENTIFIER => PROVISIONING_PROFILE_SPECIFIER,
         }
       }
     )
