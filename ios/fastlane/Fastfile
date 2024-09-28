@@ -53,9 +53,9 @@ platform :ios do
 
     increment_build_number(xcodeproj: "CkOnboardinApp.xcodeproj")
 
-    cocoapods(
-      clean_install: true
-    )
+#     cocoapods(
+#       clean_install: true
+#     )
 
     match(
       type: 'adhoc',
