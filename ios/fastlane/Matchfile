@@ -2,4 +2,4 @@ git_url("git@github.com:Dawqss/fastlane-Certificates.git")
 
 storage_mode("git")
 
-type("adhoc")
+type("adhoc") # The default type, can be: appstore, adhoc, enterprise or development
