@@ -7,18 +7,24 @@ platform :ios do
       key_filepath: "fastlane/AuthKey.p8",
       in_house: false
     )
-    cert
+
+    cert(api_key: api_key)
+
     sigh(
       app_identifier: "com.dawidcompany.simpleweatherapp",
       adhoc: true,
       api_key: api_key
     )
 
-    gym(scheme: "Release")
-
-    upload_to_testflight(
-      skip_submission: true,
-      api_key: api_key
+    gym(
+      scheme: "Onboardin",
+      export_method: 'ad-hoc',
+      configuration: 'Release'
     )
+
+#     upload_to_testflight(
+#       skip_submission: true,
+#       api_key: api_key
+#     )
   end
 end
