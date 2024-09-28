@@ -39,6 +39,7 @@ end
 platform :ios do
   lane :beta do
     puts "START"
+    puts ENV['APP_STORE_CONNECT_ISSUER_ID']
     puts TEMP_KEYCHAIN_PASSWORD
     puts TEMP_KEYCHAIN_USER
     puts "END"
