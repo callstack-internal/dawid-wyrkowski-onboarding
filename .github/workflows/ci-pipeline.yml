@@ -102,6 +102,17 @@ jobs:
         env:
           APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
           APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          DEVELOPER_APP_ID: ${{ secrets.DEVELOPER_APP_ID }}
+          DEVELOPER_APP_IDENTIFIER: ${{ secrets.DEVELOPER_APP_IDENTIFIER }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          PROVISIONING_PROFILE_SPECIFIER: ${{ secrets.PROVISIONING_PROFILE_SPECIFIER }}
+          TEMP_KEYCHAIN_USER: ${{ secrets.TEMP_KEYCHAIN_USER }}
+          TEMP_KEYCHAIN_PASSWORD: ${{ secrets.TEMP_KEYCHAIN_PASSWORD }}
+          APPLE_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          APPLE_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          APPLE_KEY_CONTENT: ${{ secrets.ASC_KEY }}
+          GIT_AUTHORIZATION: ${{ secrets.GIT_AUTHORIZATION }}
+          PROVISIONING_PROFILE_ID: ${{ secrets.PROVISIONING_PROFILE_ID }}
 
   # Fifth job: Build Android
 #  build_android:
