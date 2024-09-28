@@ -17,7 +17,7 @@ platform :ios do
     )
 
     gym(
-      scheme: "Onboardin",
+      scheme: "CkOnboardinApp",
       export_method: 'ad-hoc',
       configuration: 'Release'
     )
