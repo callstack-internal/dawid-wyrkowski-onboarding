@@ -53,10 +53,6 @@ platform :ios do
         is_key_content_base64: true,
         in_house: false,
       )
-      upload_to_app_store(
-        force: true,
-        run_precheck_before_submit: false,
-        submit_for_review: false
-      )
+      upload_to_testflight()
     end
 end
