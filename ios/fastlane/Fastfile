@@ -16,7 +16,7 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Get certificates"
+  desc "Get certificates, you can get certificates on machine by executing this command"
   lane :certificates do
     sync_code_signing(
       type: "appstore",
@@ -24,13 +24,7 @@ platform :ios do
       force_for_new_devices: true,
       readonly: true
     )
-
-    # You can repeate the sync_code_signing with other types of certificates such as appstore and adhoc
-#     sync_code_signing(
-#       type: "appstore",
-#       app_identifier: 'com.company.example',
-#       readonly: true
-#     )
+    # you can repeat command for other types of certificates like adhoc or development
   end
 
   desc "Generate new certificates"
@@ -41,7 +35,7 @@ platform :ios do
       force_for_new_devices: true,
       readonly: false
     )
-    # You can repeate the sync_code_signing with other types of certificates such as appstore and adhoc
+    # You can repeate the sync_code_signing with other types of certificates such as development and adhoc
   end
 
   desc "deploy"
