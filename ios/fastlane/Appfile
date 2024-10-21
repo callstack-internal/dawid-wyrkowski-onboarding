@@ -1,0 +1,9 @@
+#app_identifier("[[APP_IDENTIFIER]]") # The bundle identifier of your app
+#apple_id("[[APPLE_ID]]") # Your Apple Developer Portal username
+#For more information about the Appfile, see:
+#https://docs.fastlane.tools/advanced/#appfile
+
+team_name "Dawid Wyrkowski"
+team_id "5G4M55X26F"
+itc_team_name "Dawid Wyrkowski"
+itc_team_id "127349639"
