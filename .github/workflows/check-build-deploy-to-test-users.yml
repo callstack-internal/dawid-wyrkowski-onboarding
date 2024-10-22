@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Check, build and deploy
 
 on:
   pull_request:
