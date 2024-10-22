@@ -7,6 +7,7 @@ on:
 
 jobs:
   tsc:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -27,6 +28,7 @@ jobs:
         run: yarn run lint
   build-ios:
     runs-on: macos-latest
+    needs: [tsc, lint]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
