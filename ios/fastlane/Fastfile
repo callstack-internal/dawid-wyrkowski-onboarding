@@ -46,7 +46,8 @@ platform :ios do
     lane :deploy do
       setup_ci
 
-      increment_build_number(xcodeproj: "CkOnboardinApp.xcodeproj")
+      current_build_number = app_store_build_number(live: false)
+      increment_build_number(xcodeproj: "CkOnboardinApp.xcodeproj", build_number: current_build_number + 1)
 
       sync_code_signing(
         type: "appstore",
