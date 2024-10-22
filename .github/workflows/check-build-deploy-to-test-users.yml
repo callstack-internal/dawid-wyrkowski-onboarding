@@ -4,12 +4,12 @@ on:
   pull_request:
     branches:
       - master
-    types:
-      - closed
+#    types:
+#      - closed
 
 jobs:
   tsc:
-    if: github.event.pull_request.merged == true
+#    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
