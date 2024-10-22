@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Check build & deploy to test users
 
 on:
   pull_request:
