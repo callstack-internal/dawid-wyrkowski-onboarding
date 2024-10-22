@@ -92,6 +92,11 @@ jobs:
           gem install bundler -v 2.4.22
           bundle install
 
+      - name: Install Pods
+        run: |
+          cd ios
+          pod install
+
       - name: Run Fastlane Lane
         run: |
           cd ios
