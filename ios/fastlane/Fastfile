@@ -35,6 +35,7 @@ platform :ios do
     sync_code_signing(
       type: "appstore",
       app_identifier: "com.dawidcompany.simpleweatherapp",
+      git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
       force_for_new_devices: true,
       readonly: false
     )
@@ -47,6 +48,7 @@ platform :ios do
       sync_code_signing(
         type: "appstore",
         app_identifier: 'com.dawidcompany.simpleweatherapp',
+        git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
         force_for_new_devices: true,
         readonly: true
       )
