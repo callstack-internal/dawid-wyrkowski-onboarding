@@ -47,10 +47,12 @@ yarn-error.log
 # For more information about the recommended setup visit:
 # https://docs.fastlane.tools/best-practices/source-control/
 
-**/fastlane/report.xml
-**/fastlane/Preview.html
-**/fastlane/screenshots
-**/fastlane/test_output
+ios/oldFastlane/report.xml
+ios/oldFastlane/Preview.html
+ios/oldFastlane/screenshots
+ios/oldFastlane/test_output
+
+ios/fastlane/.env.default
 
 # Bundle artifact
 *.jsbundle

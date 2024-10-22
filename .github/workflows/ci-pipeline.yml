@@ -1,0 +1,33 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  tsc:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-node
+      - name: Run TypeScript compiler
+        run: yarn run tsc
+  lint:
+    runs-on: ubuntu-latest
+    needs: tsc
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-node
+      - name: Run Linting
+        run: yarn run lint
+  build:
+    runs-on: ubuntu-latest
+    needs: [tsc, lint]
+    steps:
+      - name: Build app with fastlane
+        run: echo Add fastlane lane for build only without deploy step

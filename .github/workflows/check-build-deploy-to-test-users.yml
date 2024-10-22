@@ -1,0 +1,63 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+  tsc:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-node
+      - name: Run TypeScript compiler
+        run: yarn run tsc
+  lint:
+    runs-on: ubuntu-latest
+    needs: tsc
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-node
+      - name: Run Linting
+        run: yarn run lint
+  build-ios:
+    runs-on: macos-latest
+    needs: [tsc, lint]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.0'
+      - name: Setup Node and Install Dependencies
+        uses: ./.github/actions/setup-node
+      - name: Install Fastlane
+        run: |
+          cd ios
+          rm -rf Gemfile.lock
+          gem install bundler -v 2.4.22
+          bundle install
+      - name: Install Pods
+        run: |
+          cd ios
+          pod install
+      - name: Run Fastlane Lane
+        run: |
+          cd ios
+          bundle exec fastlane certificates && bundle exec fastlane deploy
+        env:
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_USERNAME: ${{ secrets.MATCH_USERNAME }}
+          APP_STORE_CONNECT_API_KEY_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY_ID }}
+          APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
+          APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
+          GIT_AUTHORIZATION: ${{ secrets.GIT_AUTHORIZATION }}
