@@ -1,4 +1,8 @@
 GIT_AUTHORIZATION = ENV["GIT_AUTHORIZATION"]
+KEY_ID = ENV["APP_STORE_CONNECT_API_KEY_KEY_ID"]
+ISSUER_ID = ENV["APP_STORE_CONNECT_API_KEY_ISSUER_ID"]
+KEY_CONTENT = ENV["APP_STORE_CONNECT_API_KEY_KEY"]
+APP_IDENTIFIER = ENV["APPLE_APP_IDENTIFIER"]
 
 default_platform(:ios)
 
@@ -7,7 +11,7 @@ platform :ios do
   lane :certificates do
     sync_code_signing(
       type: "appstore",
-      app_identifier: "com.dawidcompany.simpleweatherapp",
+      app_identifier: APP_IDENTIFIER,
       git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
       force_for_new_devices: true,
       readonly: true
@@ -19,7 +23,7 @@ platform :ios do
   lane :generate_new_certificates do
     sync_code_signing(
       type: "appstore",
-      app_identifier: "com.dawidcompany.simpleweatherapp",
+      app_identifier: APP_IDENTIFIER,
       git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
       force_for_new_devices: true,
       readonly: false
@@ -28,24 +32,35 @@ platform :ios do
   end
 
   desc "deploy"
-    lane :deploy do
-      setup_ci
+  lane :deploy do
+    setup_ci
+    api_key = app_store_connect_api_key(
+      key_id: KEY_ID,
+      issuer_id: ISSUER_ID,
+      key_content: KEY_CONTENT,
+      is_key_content_base64: true
+    )
+    build_num = app_store_build_number(
+      live: false,
+      api_key: api_key,
+      app_identifier: APP_IDENTIFIER
+    )
 
-      increment_build_number(xcodeproj: "CkOnboardinApp.xcodeproj", build_number: latest_testflight_build_number + 1)
+    increment_build_number(xcodeproj: "CkOnboardinApp.xcodeproj", build_number: build_num + 1)
 
-      sync_code_signing(
-        type: "appstore",
-        app_identifier: 'com.dawidcompany.simpleweatherapp',
-        git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
-        force_for_new_devices: true,
-        readonly: true
-      )
+    sync_code_signing(
+      type: "appstore",
+      app_identifier: APP_IDENTIFIER,
+      git_basic_authorization: Base64.strict_encode64(GIT_AUTHORIZATION),
+      force_for_new_devices: true,
+      readonly: true
+    )
 
-      build_app(scheme: "CkOnboardinApp")
-      app_store_connect_api_key(
-        is_key_content_base64: true,
-        in_house: false,
-      )
-      upload_to_testflight()
-    end
+    build_app(scheme: "CkOnboardinApp")
+    app_store_connect_api_key(
+      is_key_content_base64: true,
+      in_house: false,
+    )
+    upload_to_testflight()
+  end
 end
