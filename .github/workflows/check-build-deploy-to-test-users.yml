@@ -61,3 +61,8 @@ jobs:
           APP_STORE_CONNECT_API_KEY_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ISSUER_ID }}
           APP_STORE_CONNECT_API_KEY_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY_KEY }}
           GIT_AUTHORIZATION: ${{ secrets.GIT_AUTHORIZATION }}
+          APPLE_APP_IDENTIFIER: ${{ secrets.APPLE_APP_IDENTIFIER }}
+          TEAM_NAME: ${{ secrets.TEAM_NAME }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+          ITC_TEAM_NAME: ${{ secrets.ITC_TEAM_NAME }}
+          ITC_TEAM_ID: ${{ secrets.ITC_TEAM_ID }}
