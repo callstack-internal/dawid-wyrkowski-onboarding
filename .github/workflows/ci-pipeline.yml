@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
   pull_request:
     branches:
-      - master2
+      - masterDontUseMe
 
 jobs:
   tsc:
