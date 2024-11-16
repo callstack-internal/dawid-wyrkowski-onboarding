@@ -101,10 +101,13 @@ export function WeatherDetailsScreen({
         <Image style={weatherDetailsScreensStyles.image} source={source} />
       </View>
       <ScrollView>
-        {table.map(({ name, value }) => (
-          <View style={weatherDetailsScreensStyles.rowNameValue}>
+        {table.map(({ name: rowName, value }) => (
+          <View
+            style={weatherDetailsScreensStyles.rowNameValue}
+            key={rowName + value}
+          >
             <Text style={weatherDetailsScreensStyles.textValueName}>
-              {name}
+              {rowName}
             </Text>
             <Text style={weatherDetailsScreensStyles.textValue}>{value}</Text>
           </View>

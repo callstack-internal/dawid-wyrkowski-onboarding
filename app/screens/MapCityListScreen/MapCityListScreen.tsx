@@ -20,8 +20,8 @@ export function MapCityListScreen() {
       fetchCitiesWeatherInRadiusByLatLngThunk({
         lat: FallbackLatLng.lat,
         lon: FallbackLatLng.lng,
-        numberOfCities: 20,
-        radiusInKm: 20
+        numberOfCities: 50,
+        radiusInKm: 150
       })
     );
   }, []);
