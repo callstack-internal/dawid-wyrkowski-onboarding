@@ -8,13 +8,8 @@ type FetchCitiesInRadiusByLatLngProps = Parameters<
 export const fetchCitiesWeatherInRadiusByLatLngThunk = createAsyncThunk(
   'weatherCityList/fetchCitiesInRadiusByLatLng',
   async (args: FetchCitiesInRadiusByLatLngProps) => {
-    try {
-      const response = await WeatherApi.findCitiesWeatherInRadiusByLatLng(args);
+    const response = await WeatherApi.findCitiesWeatherInRadiusByLatLng(args);
 
-      return response.data;
-    } catch (e) {
-      console.log(e);
-      throw e;
-    }
+    return response.data;
   }
 );
