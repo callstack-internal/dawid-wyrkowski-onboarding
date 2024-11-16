@@ -40,8 +40,7 @@ module.exports = {
     'no-param-reassign': 'off',
     'prefer-arrow-callback': 'off',
     'react/prop-types': 'off',
-    'react/jsx-props-no-spreading': 'off',
-    'no-unused-vars': 'off'
+    'react/jsx-props-no-spreading': 'off'
   },
   globals: {
     __DEV__: true

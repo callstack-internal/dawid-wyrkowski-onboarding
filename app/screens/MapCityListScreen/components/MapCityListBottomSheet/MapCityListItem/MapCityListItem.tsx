@@ -6,7 +6,7 @@ import { WeatherItem } from '@http/types.ts';
 import { mapCityListItemStyles } from '@screens/MapCityListScreen/components/MapCityListBottomSheet/MapCityListItem/mapCityListItemStyles.ts';
 import { getWeatherIconUri } from '@screens/MapCityListScreen/components/MapCityListBottomSheet/MapCityListItem/utils/getWeatherIconUri.ts';
 import { useNavigation } from '@react-navigation/native';
-import { RouteNames } from '@navigation/MainRouter.tsx';
+import { RouteNames } from '@navigation/types.ts';
 
 export function MapCityListItem({
   item
@@ -39,7 +39,7 @@ export function MapCityListItem({
         <Text style={mapCityListItemStyles.weatherType}>{weatherType}</Text>
       </View>
       <View style={mapCityListItemStyles.tempContainer}>
-        <Text style={mapCityListItemStyles.temp}>{temp}</Text>
+        <Text style={mapCityListItemStyles.temp}>{temp}°C</Text>
       </View>
     </TouchableOpacity>
   );
