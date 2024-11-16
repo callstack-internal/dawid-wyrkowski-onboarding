@@ -19,7 +19,7 @@ module.exports = {
           '@screens': './app/screens',
           '@state': './app/state',
           '@types': './app/types',
-          '@utils': './app/types'
+          '@utils': './app/utils'
         }
       }
     ],

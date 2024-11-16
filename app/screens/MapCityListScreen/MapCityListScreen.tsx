@@ -1,32 +1,47 @@
-import React, { useEffect } from 'react';
-import { MapView } from '@rnmapbox/maps';
-import { useAppDispatch, useAppSelector } from '@state/hooks.ts';
-import { fetchCitiesWeatherInRadiusByLatLngThunk } from '@state/features/weatherCityList/weatherCityListThunks.ts';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { MapView, Camera } from '@rnmapbox/maps';
 
-// 52.237049, 21.017532
+import { useAppDispatch } from '@state/hooks.ts';
+import { fetchCitiesWeatherInRadiusByLatLngThunk } from '@state/features/weatherCityList/weatherCityListThunks.ts';
+import { mapCityListScreenStyles } from '@screens/MapCityListScreen/mapCityListScreenStyles.ts';
+import { MapCityListBottomSheet } from '@screens/MapCityListScreen/components/MapCityListBottomSheet/MapCityListBottomSheet.tsx';
+import {
+  FallbackBounds,
+  FallbackLatLng
+} from '@screens/MapCityListScreen/constants.ts';
 
 export function MapCityListScreen() {
+  const cameraRef = useRef<Camera>(null);
   const dispatch = useAppDispatch();
+  const isCameraInit = useRef(false);
 
   useEffect(function onInit() {
     dispatch(
       fetchCitiesWeatherInRadiusByLatLngThunk({
-        lat: 54,
-        lon: 22,
+        lat: FallbackLatLng.lat,
+        lon: FallbackLatLng.lng,
         numberOfCities: 20,
-        radiusInKm: 10
+        radiusInKm: 20
       })
     );
   }, []);
 
-  const d = useAppSelector((state) => state.weatherCityList);
-  console.log(d);
+  const onCameraChanged = useCallback(() => {
+    if (isCameraInit.current) {
+      return;
+    }
+
+    isCameraInit.current = true;
+    cameraRef.current?.fitBounds(FallbackBounds.ne, FallbackBounds.sw, 20, 10);
+  }, []);
 
   return (
     <MapView
-      style={{
-        flex: 1
-      }}
-    />
+      style={mapCityListScreenStyles.map}
+      onCameraChanged={onCameraChanged}
+    >
+      <Camera ref={cameraRef} />
+      <MapCityListBottomSheet />
+    </MapView>
   );
 }

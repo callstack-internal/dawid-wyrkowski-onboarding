@@ -7,7 +7,7 @@ export interface WeatherCityListSliceState {
   isLoading: boolean;
 }
 
-const weatherCityListAdapter = createEntityAdapter({
+export const weatherCityListAdapter = createEntityAdapter({
   selectId: (item: WeatherItem) => item.id,
   sortComparer: (a: WeatherItem, b: WeatherItem) =>
     a.name.toLowerCase().localeCompare(b.name.toLowerCase())
