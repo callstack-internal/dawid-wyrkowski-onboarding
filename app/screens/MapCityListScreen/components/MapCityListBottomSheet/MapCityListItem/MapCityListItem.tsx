@@ -1,27 +1,34 @@
-import React from 'react';
-import { Image, Text, View } from 'react-native';
-import type { ListRenderItem } from '@react-native/virtualized-lists';
+import React, { useCallback } from 'react';
+import { Image, Text, View, ListRenderItemInfo } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
 import { WeatherItem } from '@http/types.ts';
 import { mapCityListItemStyles } from '@screens/MapCityListScreen/components/MapCityListBottomSheet/MapCityListItem/mapCityListItemStyles.ts';
 import { getWeatherIconUri } from '@screens/MapCityListScreen/components/MapCityListBottomSheet/MapCityListItem/utils/getWeatherIconUri.ts';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { RouteNames } from '@navigation/MainRouter.tsx';
 
-interface Props {}
-
-export const MapCityListItem: ListRenderItem<WeatherItem> = ({
-  item,
-  index
-}) => {
+export function MapCityListItem({
+  item
+}: ListRenderItemInfo<WeatherItem>): React.ReactElement {
+  const { navigate } = useNavigation();
   const {
     name,
-    main: { humidity, temp },
+    main: { temp },
     weather: [{ main: weatherType, icon }]
   } = item;
 
   const source = { uri: getWeatherIconUri(icon) };
 
+  const onItemPress = useCallback(() => {
+    navigate(RouteNames.WeatherDetails);
+  }, []);
+
   return (
-    <TouchableOpacity style={mapCityListItemStyles.container}>
+    <TouchableOpacity
+      style={mapCityListItemStyles.container}
+      onPress={onItemPress}
+    >
       <Image
         source={source}
         resizeMode="cover"
@@ -36,4 +43,4 @@ export const MapCityListItem: ListRenderItem<WeatherItem> = ({
       </View>
     </TouchableOpacity>
   );
-};
+}

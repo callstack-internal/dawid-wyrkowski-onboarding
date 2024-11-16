@@ -19,7 +19,8 @@ class WeatherApi {
         lon,
         cnt: numberOfCities,
         radius: radiusInKm,
-        cluster: 'yes'
+        cluster: 'yes',
+        units: 'metric'
       }
     });
   }

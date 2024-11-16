@@ -10,6 +10,8 @@ export const mapCityListScreenStyles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    padding: 4
+    paddingHorizontal: 4,
+    paddingTop: 4,
+    paddingBottom: 36
   }
 });
