@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Image, Text, View, ListRenderItemInfo } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -6,22 +6,26 @@ import { WeatherItem } from '@http/types.ts';
 import { mapCityListItemStyles } from '@screens/MapCityListScreen/components/MapCityListBottomSheet/MapCityListItem/mapCityListItemStyles.ts';
 import { getWeatherIconUri } from '@screens/MapCityListScreen/components/MapCityListBottomSheet/MapCityListItem/utils/getWeatherIconUri.ts';
 import { useNavigation } from '@react-navigation/native';
-import { RouteNames } from '@navigation/types.ts';
+import { RouteNames } from '@navigation/MainRouter.tsx';
 
 export function MapCityListItem({
   item
 }: ListRenderItemInfo<WeatherItem>): React.ReactElement {
   const { navigate } = useNavigation();
   const {
+    id: cityEntityId,
     name,
     main: { temp },
     weather: [{ main: weatherType, icon }]
   } = item;
 
-  const source = { uri: getWeatherIconUri(icon) };
+  const source = useMemo(() => ({ uri: getWeatherIconUri(icon) }), [icon]);
 
   const onItemPress = useCallback(() => {
-    navigate(RouteNames.WeatherDetails);
+    navigate({
+      name: RouteNames.WeatherDetails,
+      params: { cityEntityId }
+    });
   }, []);
 
   return (

@@ -9,6 +9,8 @@ import { MapCityListItem } from '@screens/MapCityListScreen/components/MapCityLi
 import type { ListRenderItem } from '@react-native/virtualized-lists';
 import { WeatherItem } from '@http/types.ts';
 
+const keyExtractor = (item: WeatherItem) => String(item.id);
+
 export function MapCityListBottomSheet() {
   const cities = useAppSelector(weatherCityListSelector);
 
@@ -20,7 +22,11 @@ export function MapCityListBottomSheet() {
   return (
     <BottomSheet snapPoints={['20%', '50%', '90%']}>
       <BottomSheetView style={mapCityListScreenStyles.contentContainer}>
-        <FlatList data={cities} renderItem={renderItem} />
+        <FlatList
+          data={cities}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+        />
       </BottomSheetView>
     </BottomSheet>
   );

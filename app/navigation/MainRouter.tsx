@@ -1,11 +1,26 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {
-  createStaticNavigation,
-  StaticParamList
-} from '@react-navigation/native';
+import { createStaticNavigation } from '@react-navigation/native';
 import { MapCityListScreen } from '@screens/MapCityListScreen/MapCityListScreen.tsx';
 import { WeatherDetailsScreen } from '@screens/WeatherDetailsScreen/WeatherDetailsScreen.tsx';
-import { RootStackParamList, RouteNames } from '@navigation/types.ts';
+
+/**
+ * Vars are used but airbnb config doesnt respect ts - TODO: tweak/fix eslint plugins
+ */
+export enum RouteNames {
+  // eslint-disable-next-line no-unused-vars
+  MapCityList = 'MapCityList',
+  // eslint-disable-next-line no-unused-vars
+  WeatherDetails = 'WeatherDetails'
+}
+/**
+ * Add here types for the screens that are passed by navigation
+ */
+export type RootStackParamList = {
+  [RouteNames.MapCityList]: {};
+  [RouteNames.WeatherDetails]: {
+    cityEntityId: number;
+  };
+};
 
 const RootStack = createNativeStackNavigator<RootStackParamList>({
   screens: {
@@ -19,8 +34,6 @@ const RootStack = createNativeStackNavigator<RootStackParamList>({
   }
 });
 
-type RootStackStaticParamList = StaticParamList<typeof RootStack>;
-
 /**
  * Override static props for navigation purposes
  * useNavigation use it for checking possible routes
@@ -29,7 +42,7 @@ declare global {
   // eslint-disable-next-line no-unused-vars
   namespace ReactNavigation {
     // eslint-disable-next-line no-unused-vars
-    interface RootParamList extends RootStackStaticParamList {}
+    interface RootParamList extends RootStackParamList {}
   }
 }
 
