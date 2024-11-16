@@ -36,7 +36,9 @@ module.exports = {
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] }
     ],
     'class-methods-use-this': 'off',
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export': 'off',
+    'no-param-reassign': 'off',
+    'prefer-arrow-callback': 'off'
   },
   globals: {
     __DEV__: true
