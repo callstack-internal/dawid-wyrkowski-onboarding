@@ -29,6 +29,7 @@ interface Snow {
 
 interface Clouds {
   today: number;
+  all: number;
 }
 
 interface WeatherDescription {
@@ -50,6 +51,7 @@ export interface WeatherItem {
   snow: Snow | null;
   clouds: Clouds;
   weather: WeatherDescription[];
+  sys: { country: string };
 }
 
 export interface WeatherResponse {
