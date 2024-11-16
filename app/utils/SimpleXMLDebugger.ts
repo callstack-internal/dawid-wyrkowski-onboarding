@@ -6,6 +6,7 @@ export class SimpleXMLDebugger extends XMLHttpRequest {
     user?: string | null,
     password?: string | null
   ) {
+    // eslint-disable-next-line no-console
     console.log(
       `method: ${method}\n url: ${url}\n async: ${async}\n user: ${user}\n password: ${password}\n`
     );

@@ -24,6 +24,9 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1IjoiZGF3aWRjYWxsc3RhY2siLCJhIjoiY20xandhczM0MDJuNDJrczQ0aDV3ZHp1MSJ9.yWuGxhtuQTQQm3wWr-olzA
+pk.eyJ1IjoiZGF3aWRjYWxsc3RhY2siLCJhIjoiY20xandhczM0MDJuNDJrczQ0aDV3ZHp1MSJ9.yWuGxhtuQTQQm3wWr-olzA</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

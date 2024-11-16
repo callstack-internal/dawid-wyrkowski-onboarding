@@ -1,26 +1,36 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createStaticNavigation } from '@react-navigation/native';
+import {
+  createStaticNavigation,
+  StaticParamList
+} from '@react-navigation/native';
 import { MapCityListScreen } from '@screens/MapCityListScreen/MapCityListScreen.tsx';
 import { WeatherDetailsScreen } from '@screens/WeatherDetailsScreen/WeatherDetailsScreen.tsx';
-
-/**
- * Add here types for the screens that are passed by navigation
- */
-type RootStackParamList = {
-  MapCityList: {};
-  WeatherDetails: {};
-};
+import { RootStackParamList, RouteNames } from '@navigation/types.ts';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>({
   screens: {
-    MapCityList: {
+    [RouteNames.MapCityList]: {
       screen: MapCityListScreen,
       options: {
         headerShown: false
       }
     },
-    WeatherDetails: WeatherDetailsScreen
+    [RouteNames.WeatherDetails]: WeatherDetailsScreen
   }
 });
+
+type RootStackStaticParamList = StaticParamList<typeof RootStack>;
+
+/**
+ * Override static props for navigation purposes
+ * useNavigation use it for checking possible routes
+ */
+declare global {
+  // eslint-disable-next-line no-unused-vars
+  namespace ReactNavigation {
+    // eslint-disable-next-line no-unused-vars
+    interface RootParamList extends RootStackStaticParamList {}
+  }
+}
 
 export const MainRouterNavigation = createStaticNavigation(RootStack);

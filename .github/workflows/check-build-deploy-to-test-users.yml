@@ -46,6 +46,12 @@ jobs:
           rm -rf Gemfile.lock
           gem install bundler -v 2.4.22
           bundle install
+      - name: Update .netrc
+        run: |
+          touch .netrc
+          echo $NETRC >> .netrc
+        env:
+          NETRC: ${{ secrets.NETRC }}
       - name: Install Pods
         run: |
           cd ios
