@@ -94,7 +94,10 @@ export function WeatherDetailsScreen({
       <View style={weatherDetailsScreensStyles.titleContainer}>
         <View>
           <Text style={weatherDetailsScreensStyles.title}>{name}</Text>
-          <Text style={weatherDetailsScreensStyles.subTitle}>
+          <Text
+            style={weatherDetailsScreensStyles.subTitle}
+            accessibilityLanguage="EN"
+          >
             {description}
           </Text>
         </View>
@@ -106,7 +109,10 @@ export function WeatherDetailsScreen({
             style={weatherDetailsScreensStyles.rowNameValue}
             key={rowName + value}
           >
-            <Text style={weatherDetailsScreensStyles.textValueName}>
+            <Text
+              style={weatherDetailsScreensStyles.textValueName}
+              accessibilityLanguage="EN"
+            >
               {rowName}
             </Text>
             <Text style={weatherDetailsScreensStyles.textValue}>{value}</Text>

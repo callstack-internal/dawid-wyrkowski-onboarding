@@ -32,6 +32,11 @@ export function MapCityListItem({
     <TouchableOpacity
       style={mapCityListItemStyles.container}
       onPress={onItemPress}
+      accessible
+      accessibilityElementsHidden
+      importantForAccessibility="no-hide-descendants"
+      accessibilityRole="button"
+      accessibilityLabel={`${name}..${temp}°C`}
     >
       <Image
         source={source}

@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { FlatList } from 'react-native-gesture-handler';
 
@@ -8,11 +8,23 @@ import { weatherCityListSelector } from '@state/features/weatherCityList/weather
 import { MapCityListItem } from '@screens/MapCityListScreen/components/MapCityListBottomSheet/MapCityListItem/MapCityListItem.tsx';
 import type { ListRenderItem } from '@react-native/virtualized-lists';
 import { WeatherItem } from '@http/types.ts';
+import { AccessibilityInfoContext } from '@contexts/AccessibilityInfoContext.tsx';
 
 const keyExtractor = (item: WeatherItem) => String(item.id);
 
 export function MapCityListBottomSheet() {
   const cities = useAppSelector(weatherCityListSelector);
+  const { isScreenReaderEnabled } = useContext(AccessibilityInfoContext);
+
+  const handleComponent = useMemo(
+    () => (isScreenReaderEnabled ? () => null : undefined),
+    [isScreenReaderEnabled]
+  );
+
+  const snapPoints = useMemo(
+    () => (isScreenReaderEnabled ? ['95%'] : ['20%', '50%', '90%']),
+    [isScreenReaderEnabled]
+  );
 
   const renderItem: ListRenderItem<WeatherItem> = useCallback(
     ({ ...info }) => <MapCityListItem {...info} />,
@@ -20,7 +32,11 @@ export function MapCityListBottomSheet() {
   );
 
   return (
-    <BottomSheet snapPoints={['20%', '50%', '90%']}>
+    <BottomSheet
+      accessible={false}
+      snapPoints={snapPoints}
+      handleComponent={handleComponent}
+    >
       <BottomSheetView style={mapCityListScreenStyles.contentContainer}>
         <FlatList
           data={cities}
