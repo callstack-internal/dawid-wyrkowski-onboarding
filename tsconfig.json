@@ -13,7 +13,8 @@
       "@screens/*": ["screens/*"],
       "@state/*": ["state/*"],
       "@types/*": ["types/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@contexts/*": ["contexts/*"]
     },
   },
   "include": ["app/**/*.ts", "app/**/*.tsx"],

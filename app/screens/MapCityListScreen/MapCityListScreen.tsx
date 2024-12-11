@@ -37,6 +37,7 @@ export function MapCityListScreen() {
 
   return (
     <MapView
+      attributionEnabled={false}
       style={mapCityListScreenStyles.map}
       onCameraChanged={onCameraChanged}
     >
